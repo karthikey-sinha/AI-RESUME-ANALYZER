@@ -3,6 +3,10 @@ import { Link } from "react-router";
 import { useEffect, useState } from "react";
 import { usePuterStore } from "~/lib/puter";
 import { useNavigate } from "react-router";
+import Summary from "~/components/Summary";
+import ATS from "~/components/ATS";
+import Details from "~/components/Details";
+
 
 
 
@@ -25,9 +29,10 @@ const Resume = () => {
     const navigate = useNavigate();
 
 
-    useEffect( () => {
-        if( !isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
-    },  [isLoading]);
+useEffect(() => {
+  if (!isLoading && !auth.isAuthenticated) navigate(`/auth?next=/resume/${id}`);
+}, [isLoading, auth.isAuthenticated, navigate, id]);
+
 
     useEffect( () => {
         const loadResume = async () => {
@@ -85,8 +90,8 @@ const Resume = () => {
                 {feedback ? (
                     <div className="flex flex-col gap-8 animate-in fade-in duration-1000">
                         <Summary feedback={feedback}/>
-                        <ATS score={feedback.ATS.score || 0 }  suggestions={feedback.ATS.tips || []} />
-                        <Details feedback= {feedback}/>
+                        <ATS score = {feedback.ATS.score || 0 }  suggestions={feedback.ATS.tips || []} />
+                        <Details feedback = {feedback}/>
                     </div>
                 ) : (
 
