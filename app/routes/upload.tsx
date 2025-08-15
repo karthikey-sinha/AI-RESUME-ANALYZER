@@ -9,6 +9,7 @@ import { prepareInstructions } from "../../constants";
 
 
 
+
 const Upload = () => {
   const { auth, isLoading, fs, ai, kv } = usePuterStore();
   const navigate = useNavigate();
@@ -53,7 +54,7 @@ const Upload = () => {
       companyName,
       jobTitle,
       jobDescription,
-      feedback : ' ',
+      feedback : "",
     }
    await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
@@ -69,12 +70,12 @@ const Upload = () => {
         ? feedback.message.content
         : feedback.message.content[0].text;
     
-       data.feedback = JSON.parse( feedbackText);
+       data.feedback = JSON.parse(feedbackText);
        await kv.set( `resume:${uuid}`, JSON.stringify(data));
        setStatusText('Analysis  Complete, redirecting...');
        navigate(`/result/${uuid}`);
        console.log(data);
-       navigate(`/resume/${uuid}`);
+       
   };
  
 

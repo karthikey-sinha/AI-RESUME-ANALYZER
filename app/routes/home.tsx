@@ -59,7 +59,7 @@ export default function Home() {
       <div className="page-heading py-5">
         <h1>Track.Rate.Get Hired</h1>
         { !loadingResumes && resumes?.length === 0 ? (
-          <h2>No Resumes Yet..</h2>
+          <h2>No One's Claimed the Spotlight Yet. Will You?</h2>
         ) : (
           <h2>AI feedback that transforms Resumes into interview magnets</h2>
         )}
